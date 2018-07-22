@@ -301,6 +301,332 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/22/扫描线-线段树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Robyn_zhu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imoverflow's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/22/扫描线-线段树/" itemprop="url">
+                  扫描线+线段树
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-22 18:22:16 / 修改时间：18:27:30" itemprop="dateCreated datePublished" datetime="2018-07-22T18:22:16+08:00">2018-07-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="扫描线-线段树"><a href="#扫描线-线段树" class="headerlink" title="扫描线+线段树"></a>扫描线+线段树</h3><h3 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h3><p>hdu1542</p>
+<h3 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h3><p>给定若干个矩形，求矩形面积的交</p>
+<h3 id="代码转自："><a href="#代码转自：" class="headerlink" title="代码转自："></a>代码转自：</h3><p><a href="https://blog.csdn.net/qq_18661257/article/details/47622677" target="_blank" rel="noopener">https://blog.csdn.net/qq_18661257/article/details/47622677</a></p>
+<pre><code>#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+typedef long long LL;
+#define lson rt &lt;&lt; 1, l, mid
+#define rson rt &lt;&lt; 1|1, mid + 1, r
+const int MAXN = 2000 + 5;
+int  Col[MAXN &lt;&lt; 2], n, cnt, res;
+double X[MAXN &lt;&lt; 2], Sum[MAXN &lt;&lt; 2];
+struct seg {
+    double l,r,h;
+    int s;                                        //1或者-1 标记入边or出边
+    seg() {}
+    seg(double l,double r,double h,int s):l(l),r(r),h(h),s(s) {}
+    bool operator &lt; (const seg &amp; object) const {
+        return h &lt; object.h;
+    }
+} S[MAXN];
+
+
+void pushup(int rt,int l,int r) {
+    if (Col[rt]) Sum[rt] = X[r+1] - X[l];//利用[ , ),这个区间性质，左闭右开，未完全覆盖
+    else if (l == r) Sum[rt] = 0;
+    else Sum[rt] = Sum[rt&lt;&lt;1] + Sum[rt&lt;&lt;1|1];  //常规操作
+}
+
+void update(int L, int R, int c,int rt,int l, int r) {
+    if(L &lt;= l &amp;&amp; r &lt;= R) {                     //在区间内 Cover到了这条边
+        Col[rt] += c;
+        pushup(rt,l,r);                        //更新sum数组，sum维护的是覆盖长度
+        return ;
+    }
+    int mid = (l + r) &gt;&gt; 1;                  //递归更新子区间
+    if(L &lt;= mid) update(L, R, c, rt &lt;&lt; 1, l, mid);
+    if(R &gt; mid) update(L, R, c, rt &lt;&lt; 1|1, mid + 1, r);
+    pushup(rt,l,r);
+}
+
+int binary_find(double x){               //之前对数据进行了离散化，现在需要找出对应的下标
+    int lb = -1,ub = res - 1;
+    while(ub - lb &gt; 1){
+        int mid = (lb + ub) &gt;&gt; 1;
+        if(X[mid] &gt;= x) ub = mid;
+        else lb = mid;
+    }
+    return ub;
+}
+
+int main() {
+    int cas = 1;
+    while(~ scanf(&quot;%d&quot;, &amp;n), n) {
+        cnt = res = 0;
+        for(int i = 0 ; i &lt; n; i ++) {
+            double a,b,c,d;
+            scanf(&quot;%lf%lf%lf%lf&quot;,&amp;a, &amp;b, &amp;c,&amp;d);
+            S[cnt] = seg(a, c, b, 1);               //水品扫描线
+            X[cnt ++] = a;
+            S[cnt] = seg(a, c, d, -1);
+            X[cnt ++] = c;
+        }
+        sort(X, X + cnt);
+        sort(S, S + cnt);
+        res ++;
+        for(int i = 1; i &lt; cnt; i ++) {          //去重
+            if(X[i] != X[i - 1]) X[res ++] = X[i];
+        }
+
+        memset(Sum, 0, sizeof(Sum));
+        memset(Col, 0, sizeof(Col));
+        double ans = 0;
+        for(int i = 0;i &lt; cnt - 1;i ++){
+            int l = binary_find(S[i].l);
+            int r = binary_find(S[i].r) - 1;//利用[ , ),这个区间性质，左闭右开
+            update(l, r, S[i].s, 1, 0, res - 1);
+            ans += Sum[1] * (S[i + 1].h - S[i].h);  //sum1???
+        }
+        printf(&quot;Test case #%d\nTotal explored area: %.2lf\n\n&quot;,cas++ , ans);
+    }
+    return 0;
+}
+</code></pre><h3 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码:"></a>我的代码:</h3><p>将其中的水平扫描线改成了垂直扫描线</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct Line{
+    double x,y1,y2;
+    int val;
+    Line(){}
+    Line(double x,double y1,double y2,int val):x(x),y1(y1),y2(y2),val(val){};
+}s[2005];
+int cov[2005&lt;&lt;2];
+double x[2005&lt;&lt;2],sum[2005&lt;&lt;2];
+
+bool cmp(const Line &amp;a,const Line &amp;b)
+{
+    return a.x&lt;b.x;
+}
+void push_up(int root,int l,int r)
+{
+    if(cov[root]) sum[root]=x[r+1]-x[l];
+    else if(l==r) sum[root]=0;
+    else sum[root]=sum[root&lt;&lt;1]+sum[root&lt;&lt;1|1];
+}
+void update(int L,int R,int val,int root,int l,int r)
+{
+    if(L&lt;=l&amp;&amp;r&lt;=R)
+    {
+        cov[root]+=val;
+        push_up(root,l,r);
+        return ;
+    }
+    int mid=(l+r)&gt;&gt;1;
+    if(L&lt;=mid) update(L,R,val,root&lt;&lt;1,l,mid);
+    if(mid&lt;R) update(L,R,val,root&lt;&lt;1|1,mid+1,r);
+    push_up(root,l,r);
+}
+int binary_find(double xx,int tot)
+{
+    int ll=-1,rr=tot-1;
+    while(rr-ll&gt;1)
+    {
+        int mid=(ll+rr)&gt;&gt;1;
+        if(x[mid]&gt;=xx) rr=mid;
+        else ll=mid;
+    }
+    return rr;
+}
+int main()
+{
+    int cas=1;
+    int n;
+    while(~scanf(&quot;%d&quot;,&amp;n)&amp;&amp;n){
+        for(int i=0;i&lt;n;i++){
+            double a,b,c,d;
+            scanf(&quot;%lf%lf%lf%lf&quot;,&amp;a,&amp;b,&amp;c,&amp;d);
+            s[i*2]=Line(a,b,d,1);
+            s[i*2+1]=Line(c,b,d,-1);
+            x[i*2]=b;
+            x[i*2+1]=d;
+        }
+        int tot=0;
+        sort(s,s+n*2,cmp);
+        sort(x,x+n*2);
+        tot++; //?
+        for(int i=1;i&lt;n*2;i++){
+            if(x[i]!=x[i-1]) x[tot++]=x[i];
+        }
+        double ans=0;
+        memset(sum,0,sizeof sum);
+        memset(cov,0,sizeof cov);
+        for(int i=0;i&lt;n*2-1;i++)
+        {
+            int l=binary_find(s[i].y1,tot);
+            int r=binary_find(s[i].y2,tot)-1;
+            update(l,r,s[i].val,1,0,tot-1);
+            ans+=sum[1]*(s[i+1].x-s[i].x);
+        }
+        printf(&quot;Test case #%d\nTotal explored area: %.2lf\n\n&quot;,cas++ , ans);
+    }
+    return 0;
+}
+</code></pre><h3 id="理解："><a href="#理解：" class="headerlink" title="理解："></a>理解：</h3><p>sum[1] 维护了当前区间线段的总长度<br>cover用来标记矩形的覆盖情况，具体含义不明</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/20/hello-github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -800,7 +1126,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -817,7 +1143,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -834,7 +1162,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1045,9 +1375,11 @@
   
     
       
+        
+      
     
       
-        
+    
       
     
       
