@@ -524,7 +524,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-25 11:24:47" itemprop="dateModified" datetime="2018-07-25T11:24:47+08:00">2018-07-25</time>
+                <time title="修改时间：2018-07-25 11:35:31" itemprop="dateModified" datetime="2018-07-25T11:35:31+08:00">2018-07-25</time>
               
             
           </span>
@@ -745,7 +745,7 @@ int main()
     }
     return 0;
 }
-</code></pre><h3 id="理解："><a href="#理解：" class="headerlink" title="理解："></a>理解：</h3><p>sum[1] 维护了当前区间线段的总长度<br>cover用来标记矩形的覆盖情况，具体含义不明</p>
+</code></pre><h3 id="理解："><a href="#理解：" class="headerlink" title="理解："></a>理解：</h3><p>sum[1] 维护了当前区间线段的总长度<br>cover用来标记矩形的覆盖情况，cover[i]标记了线段树的一个区间的线段的覆盖情况，当cover[i]&gt;=1说明有矩形被未完全覆盖，由于线段树的特点，假如区间是[1,3][4,5],那么其中的（3,4）就未被计算在内，会出现错误，所以要利用左开右闭的特点把这个区间计算进线段树里面。</p>
 
           
         
