@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Imoverflow&#39;s blog">
 <meta property="og:description" content="扫描线+线段树例题：hdu1542 题意：给定若干个矩形，求矩形面积的交 代码转自：https://blog.csdn.net/qq_18661257/article/details/47622677 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;vector&amp;gt;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-22T10:27:30.990Z">
+<meta property="og:updated_time" content="2018-07-25T03:24:47.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="扫描线+线段树">
 <meta name="twitter:description" content="扫描线+线段树例题：hdu1542 题意：给定若干个矩形，求矩形面积的交 代码转自：https://blog.csdn.net/qq_18661257/article/details/47622677 #include &amp;lt;cstdio&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;vector&amp;gt;">
@@ -347,12 +347,24 @@
                 
               
 
-              <time title="创建时间：2018-07-22 18:22:16 / 修改时间：18:27:30" itemprop="dateCreated datePublished" datetime="2018-07-22T18:22:16+08:00">2018-07-22</time>
+              <time title="创建时间：2018-07-22 18:22:16" itemprop="dateCreated datePublished" datetime="2018-07-22T18:22:16+08:00">2018-07-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-25 11:24:47" itemprop="dateModified" datetime="2018-07-25T11:24:47+08:00">2018-07-25</time>
               
             
           </span>
@@ -501,7 +513,7 @@ struct Line{
     Line(double x,double y1,double y2,int val):x(x),y1(y1),y2(y2),val(val){};
 }s[2005];
 int cov[2005&lt;&lt;2];
-double x[2005&lt;&lt;2],sum[2005&lt;&lt;2];
+double y[2005&lt;&lt;2],sum[2005&lt;&lt;2];
 
 bool cmp(const Line &amp;a,const Line &amp;b)
 {
@@ -509,7 +521,7 @@ bool cmp(const Line &amp;a,const Line &amp;b)
 }
 void push_up(int root,int l,int r)
 {
-    if(cov[root]) sum[root]=x[r+1]-x[l];
+    if(cov[root]) sum[root]=y[r+1]-y[l];
     else if(l==r) sum[root]=0;
     else sum[root]=sum[root&lt;&lt;1]+sum[root&lt;&lt;1|1];
 }
@@ -526,13 +538,13 @@ void update(int L,int R,int val,int root,int l,int r)
     if(mid&lt;R) update(L,R,val,root&lt;&lt;1|1,mid+1,r);
     push_up(root,l,r);
 }
-int binary_find(double xx,int tot)
+int binary_find(double yy,int tot)
 {
     int ll=-1,rr=tot-1;
     while(rr-ll&gt;1)
     {
         int mid=(ll+rr)&gt;&gt;1;
-        if(x[mid]&gt;=xx) rr=mid;
+        if(y[mid]&gt;=yy) rr=mid;
         else ll=mid;
     }
     return rr;
@@ -547,15 +559,15 @@ int main()
             scanf(&quot;%lf%lf%lf%lf&quot;,&amp;a,&amp;b,&amp;c,&amp;d);
             s[i*2]=Line(a,b,d,1);
             s[i*2+1]=Line(c,b,d,-1);
-            x[i*2]=b;
-            x[i*2+1]=d;
+            y[i*2]=b;
+            y[i*2+1]=d;
         }
         int tot=0;
         sort(s,s+n*2,cmp);
-        sort(x,x+n*2);
+        sort(y,y+n*2);
         tot++; //?
         for(int i=1;i&lt;n*2;i++){
-            if(x[i]!=x[i-1]) x[tot++]=x[i];
+            if(y[i]!=y[i-1]) y[tot++]=y[i];
         }
         double ans=0;
         memset(sum,0,sizeof sum);
