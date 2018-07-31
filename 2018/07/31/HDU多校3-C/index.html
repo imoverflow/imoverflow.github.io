@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="链接https://www.nowcoder.com/acm/contest/141/E 题意懒得描述 题解直觉是hash，标程给的也是hash，然后也T了。但思索一下可以发现是找循环节，用KMP处理就ok了。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344#include &amp;lt;">
-<meta name="keywords" content="字符串处理">
+  <meta name="description" content="链接http://acm.hdu.edu.cn/showproblem.php?pid=6321 题意给定一个 n 个点的无向图，m 次加边或者删边操作。 在每次操作后统计有多少个匹配包含 $k = 1,2,…, n/2$ 条边。 $2 ≤n≤ 10$,$1 ≤m≤ 30000$。  官方题解 设 $f[i][S]$ 表示前i次操作之后，S集合的点已经匹配的方案数。对于加边操作，显然$f[i][S">
+<meta name="keywords" content="状态压缩dp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="牛客多校3-E">
-<meta property="og:url" content="http://yoursite.com/2018/07/29/牛客多校3-E/index.html">
+<meta property="og:title" content="HDU多校3-C">
+<meta property="og:url" content="http://yoursite.com/2018/07/31/HDU多校3-C/index.html">
 <meta property="og:site_name" content="Imoverflow&#39;s blog">
-<meta property="og:description" content="链接https://www.nowcoder.com/acm/contest/141/E 题意懒得描述 题解直觉是hash，标程给的也是hash，然后也T了。但思索一下可以发现是找循环节，用KMP处理就ok了。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344#include &amp;lt;">
+<meta property="og:description" content="链接http://acm.hdu.edu.cn/showproblem.php?pid=6321 题意给定一个 n 个点的无向图，m 次加边或者删边操作。 在每次操作后统计有多少个匹配包含 $k = 1,2,…, n/2$ 条边。 $2 ≤n≤ 10$,$1 ≤m≤ 30000$。  官方题解 设 $f[i][S]$ 表示前i次操作之后，S集合的点已经匹配的方案数。对于加边操作，显然$f[i][S">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-29T03:02:38.376Z">
+<meta property="og:updated_time" content="2018-07-31T08:50:46.017Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="牛客多校3-E">
-<meta name="twitter:description" content="链接https://www.nowcoder.com/acm/contest/141/E 题意懒得描述 题解直觉是hash，标程给的也是hash，然后也T了。但思索一下可以发现是找循环节，用KMP处理就ok了。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344#include &amp;lt;">
+<meta name="twitter:title" content="HDU多校3-C">
+<meta name="twitter:description" content="链接http://acm.hdu.edu.cn/showproblem.php?pid=6321 题意给定一个 n 个点的无向图，m 次加边或者删边操作。 在每次操作后统计有多少个匹配包含 $k = 1,2,…, n/2$ 条边。 $2 ≤n≤ 10$,$1 ≤m≤ 30000$。  官方题解 设 $f[i][S]$ 表示前i次操作之后，S集合的点已经匹配的方案数。对于加边操作，显然$f[i][S">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/29/牛客多校3-E/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/31/HDU多校3-C/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>牛客多校3-E | Imoverflow's blog</title>
+  <title>HDU多校3-C | Imoverflow's blog</title>
   
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/29/牛客多校3-E/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/HDU多校3-C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Robyn_zhu">
@@ -322,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">牛客多校3-E
+          <h1 class="post-title" itemprop="name headline">HDU多校3-C
               
             
           </h1>
@@ -347,7 +347,7 @@
                 
               
 
-              <time title="创建时间：2018-07-29 10:51:59 / 修改时间：11:02:38" itemprop="dateCreated datePublished" datetime="2018-07-29T10:51:59+08:00">2018-07-29</time>
+              <time title="创建时间：2018-07-31 13:25:32 / 修改时间：16:50:46" itemprop="dateCreated datePublished" datetime="2018-07-31T13:25:32+08:00">2018-07-31</time>
             
 
             
@@ -403,11 +403,16 @@
       
 
       
-        <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.nowcoder.com/acm/contest/141/E" target="_blank" rel="noopener">https://www.nowcoder.com/acm/contest/141/E</a></p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p><del>懒得描述</del></p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>直觉是hash，标程给的也是hash，<del>然后也T了</del>。但思索一下可以发现是找循环节，用KMP处理就ok了。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> nxt[<span class="number">1000006</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">kmp_pre</span><span class="params">(<span class="keyword">char</span> x[],<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    j=nxt[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">    i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">-1</span>!=j&amp;&amp;x[i]!=x[j]) j=nxt[j];</span><br><span class="line">        nxt[++i]=++j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">1000005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">    kmp_pre(s,len);</span><br><span class="line">    <span class="keyword">int</span> l=len-nxt[len];     <span class="comment">//循环节的长度</span></span><br><span class="line">    <span class="keyword">if</span>(len%l==<span class="number">0</span>&amp;&amp;l!=len)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,l);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>,len/l);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;len;j+=l)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">" %d"</span>,j);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,len);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"1 %d\n"</span>,i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6321" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=6321</a></p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给定一个 n 个点的无向图，m 次加边或者删边操作。 在每次操作后统计有多少个匹配包含 $k = 1,2,…, n/2$ 条边。 $2 ≤n≤ 10$,$1 ≤m≤ 30000$。 </p>
+<h3 id="官方题解"><a href="#官方题解" class="headerlink" title="官方题解"></a>官方题解</h3><ul>
+<li>设 $f[i][S]$ 表示前i次操作之后，S集合的点已经匹配的方案数。<br>对于加边操作，显然$f[i][S]=f[i−1][S]+f[i−1][S−u−v]$。</li>
+<li>i 这一维可以省略，从大到小遍历 S，$f[S]+= f[S−u−v]$。 </li>
+<li>对于删边操作，注意到加边操作的顺序不影响结果，可以假设第$i−1$ 次操作是加入要删除的边。将加边操作的更新倒过来，得到：从小到大遍历 S， $f[S]− = f[S−u−v]$。 </li>
+<li>时间复杂度 O($m2^n$)。</li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>直接实现就可以了，据说爆搜会T，直接取模也会T。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,q;</span><br><span class="line"><span class="keyword">int</span> dp[(<span class="number">1</span>&lt;&lt;<span class="number">10</span>)+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> ans[(<span class="number">1</span>&lt;&lt;<span class="number">10</span>)+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> cnt[(<span class="number">1</span>&lt;&lt;<span class="number">10</span>)+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t=(<span class="number">1</span>&lt;&lt;u)+(<span class="number">1</span>&lt;&lt;v);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>; i&gt;=<span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((i&amp;t)==<span class="number">0</span>)</span><br><span class="line">            dp[i^t]=dp[i]+dp[i^t]&gt;mod?(dp[i]+dp[i^t]-mod):dp[i]+dp[i^t];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t=(<span class="number">1</span>&lt;&lt;u)+(<span class="number">1</span>&lt;&lt;v);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>&lt;&lt;n; i&lt;j; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((i&amp;t)==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i^t]=dp[i^t]-dp[i]&lt;<span class="number">0</span>?(dp[i^t]-dp[i]+mod):dp[i^t]-dp[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;q);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=(<span class="number">1</span>&lt;&lt;n); i&lt;j; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i]=<span class="number">0</span>;</span><br><span class="line">            cnt[i]=__builtin_popcount(i);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;q; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> u,v;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s%d%d"</span>,s,&amp;u,&amp;v);</span><br><span class="line">            u--,v--;</span><br><span class="line">            <span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'+'</span>)</span><br><span class="line">                add(u,v);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                del(u,v);</span><br><span class="line">            <span class="built_in">memset</span>(ans,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*(n+<span class="number">3</span>));</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>&lt;&lt;n;i&lt;j;i++)</span><br><span class="line">                ans[cnt[i]]=ans[cnt[i]]+dp[i]&gt;mod?ans[cnt[i]]+dp[i]-mod:ans[cnt[i]]+dp[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i+=<span class="number">2</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d%c"</span>,ans[i],i&lt;n?<span class="string">' '</span>:<span class="string">'\n'</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -427,7 +432,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/字符串处理/" rel="tag"># 字符串处理</a>
+            <a href="/tags/状态压缩dp/" rel="tag"># 状态压缩dp</a>
           
         </div>
       
@@ -440,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/27/牛客多校2-G/" rel="next" title="牛客多校2-G">
-                <i class="fa fa-chevron-left"></i> 牛客多校2-G
+              <a href="/2018/07/29/牛客多校3-E/" rel="next" title="牛客多校3-E">
+                <i class="fa fa-chevron-left"></i> 牛客多校3-E
               </a>
             
           </div>
@@ -449,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/31/HDU多校3-C/" rel="prev" title="HDU多校3-C">
-                HDU多校3-C <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -608,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#官方题解"><span class="nav-number">3.</span> <span class="nav-text">官方题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">4.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
