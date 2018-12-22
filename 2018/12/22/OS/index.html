@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="简答题多道程序概念多道程序设计技术是在计算机内存中同时存放几道相互独立的程序，使它们在管理程序控制下，相互穿插运行，两个或两个以上程序在计算机系统中同处于开始到结束之间的状态，这些程序共享计算机系统资源。与之相对应的是单到程序，即在计算机内存中只允许一个程序运行 特点 多道：即计算机内存中同时存放几道相互独立的程序 宏观上并行：同时进入系统的几道程序都处于运行过程中，即它们先后开始了各自的运行，但">
+<meta name="keywords" content="复习资料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OS">
+<meta property="og:url" content="http://yoursite.com/2018/12/22/OS/index.html">
+<meta property="og:site_name" content="Imoverflow&#39;s blog">
+<meta property="og:description" content="简答题多道程序概念多道程序设计技术是在计算机内存中同时存放几道相互独立的程序，使它们在管理程序控制下，相互穿插运行，两个或两个以上程序在计算机系统中同处于开始到结束之间的状态，这些程序共享计算机系统资源。与之相对应的是单到程序，即在计算机内存中只允许一个程序运行 特点 多道：即计算机内存中同时存放几道相互独立的程序 宏观上并行：同时进入系统的几道程序都处于运行过程中，即它们先后开始了各自的运行，但">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://uphotos.eepw.com.cn/1388735019/pics/f5d36b7eb879fea3684c7bf0d46dbbc9.png">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545405375769&di=8d8266285e24a2858f51e3be1f9aa753&imgtype=0&src=http%3A%2F%2Fimg2018.cnblogs.com%2Fblog%2F1503563%2F201812%2F1503563-20181212204245926-1027484831.png">
+<meta property="og:image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=12959185,3445983837&fm=15&gp=0.jpg">
+<meta property="og:image" content="c:/Users/24110/AppData/Roaming/Typora/typora-user-images/1545114358063.png">
+<meta property="og:image" content="c:/Users/24110/AppData/Roaming/Typora/typora-user-images/1545114442114.png">
+<meta property="og:updated_time" content="2018-12-22T07:32:14.611Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OS">
+<meta name="twitter:description" content="简答题多道程序概念多道程序设计技术是在计算机内存中同时存放几道相互独立的程序，使它们在管理程序控制下，相互穿插运行，两个或两个以上程序在计算机系统中同处于开始到结束之间的状态，这些程序共享计算机系统资源。与之相对应的是单到程序，即在计算机内存中只允许一个程序运行 特点 多道：即计算机内存中同时存放几道相互独立的程序 宏观上并行：同时进入系统的几道程序都处于运行过程中，即它们先后开始了各自的运行，但">
+<meta name="twitter:image" content="http://uphotos.eepw.com.cn/1388735019/pics/f5d36b7eb879fea3684c7bf0d46dbbc9.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/22/OS/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>OS | Imoverflow's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Imoverflow's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+    <a href="/schedule/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />日程表</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/22/OS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Robyn_zhu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imoverflow's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OS
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-22 15:30:36 / 修改时间：15:32:14" itemprop="dateCreated datePublished" datetime="2018-12-22T15:30:36+08:00">2018-12-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OS/" itemprop="url" rel="index"><span itemprop="name">OS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简答题"><a href="#简答题" class="headerlink" title="简答题"></a>简答题</h1><h3 id="多道程序"><a href="#多道程序" class="headerlink" title="多道程序"></a>多道程序</h3><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>多道程序设计技术是在计算机内存中同时存放几道相互独立的程序，使它们在管理程序控制下，相互穿插运行，两个或两个以上程序在计算机系统中同处于开始到结束之间的状态，这些程序共享计算机系统资源。与之相对应的是单到程序，即在计算机内存中只允许一个程序运行</p>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ol>
+<li>多道：即计算机内存中同时存放几道相互独立的程序</li>
+<li>宏观上并行：同时进入系统的几道程序都处于运行过程中，即它们先后开始了各自的运行，但都未运行完毕</li>
+<li>微观上串行：从微观上看，内存中的多道程序轮流地和或分时地占有CPU</li>
+</ol>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>提高CPU的利用率：多个程序共享计算机资源，当某个程序等待I/O操作时，CPU可以执行其他程序</li>
+<li>提高设备的利用率：多个程序共享系统的设备，使得系统设备的利用吕提高</li>
+<li>提高系统的吞吐量：多道程序环境下，减少了程序的等待时间，提高了系统的吞吐量</li>
+</ol>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h5 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h5><p>死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程</p>
+<h5 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h5><ul>
+<li>竞争资源引起死锁<ul>
+<li>可剥夺性资源（CPU，内存）和非剥夺性资源（打印机，磁带机）    </li>
+<li>竞争非剥夺性资源可导致死锁</li>
+<li>竞争临时性资源可导致死锁</li>
+</ul>
+</li>
+<li>进程推进顺序不当引起死锁</li>
+</ul>
+<h5 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h5><ul>
+<li>互斥条件(资源的临界性)</li>
+<li>请求和保持条件</li>
+<li>不剥夺条件</li>
+<li>环路等待</li>
+</ul>
+<h5 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h5><ol>
+<li><p>预防：破坏四个必要条件之一（有效但是资源利用率低）</p>
+<ul>
+<li><p>摒弃互斥条件：互斥是资源固有属性，无法避免</p>
+</li>
+<li><p>摒弃请求和保持条件：资源的一次性分配（全分配，全释放）</p>
+<p>缺点：（1）延迟进程运行（2）资源严重浪费</p>
+</li>
+<li><p>条件：新申请不能满足则释放已获得资源</p>
+<p>缺点：增加系统开销，且进程前端工作可能失效</p>
+</li>
+<li><p>摒弃“环路”条件：资源的有序分配法（为资源编号，申请时需编号进行）</p>
+<p>缺点：(1)新增资源不便(原序号已排定)(2)用户不自由(3)资源与进程使用顺序不同造成浪费</p>
+</li>
+</ul>
+</li>
+<li><p>避免：防止进入不安全状态（允许动态申请资源，银行家算法）</p>
+<ul>
+<li><p>安全状态是在“避免死锁”方法中的判断条件</p>
+</li>
+<li><p>按照某种顺序并发进程都能达到的获得最大资源而顺序完成的序列为安全序列</p>
+<p>能找到安全序列的状态为安全状态</p>
+</li>
+<li><p>银行家算法看后面</p>
+</li>
+</ul>
+</li>
+<li><p>检测：检测到死锁再清除</p>
+<ul>
+<li>死锁定理：S为死锁状态的充分条件是当且仅当S状态的资源分配图是不可完全简化。</li>
+<li>找出既不阻塞又非独立结点，去掉所有分配边和请求边；继续化简，若能完全简化，则不会发生死锁，否则会死锁。</li>
+<li>检测时间：<ul>
+<li>每当有资源请求时去检测， 毫无疑问越早发现越好， 但这种方法会占用昂贵的 CPU 时间</li>
+<li>每隔 k 分钟去检测一次 ， 或者当 CPU 的 使用率降到某一限值时去检测</li>
+</ul>
+</li>
+<li>重视 CPU 使用率的原因在于如果死锁的进程数达到一 定数量 ， 就没有多少进程可以被执行 ， CPU 会经常被限 制 。</li>
+</ul>
+</li>
+<li><p>解除：系统中若出现死锁现象，将有大量的系统资 源被占用、被浪费，甚至可能导致系统的崩溃。 因此，一旦检测出死锁的存在，就应该尽快地采 取措施，解除死锁，恢复系统的运行</p>
+<ul>
+<li>剥夺资源<ul>
+<li>把一个资源从一个进程手中抢过来，交给另一个 进程使用，等它用完之后，再还给原来的进程</li>
+<li>在资源剥夺过程中所造成的不良影响的大小，完 全取决于该资源自身的性质。实际上，死锁问题 正是由不可抢占资源所引起的，所以强行剥夺资 源必然会影响进程的正常运行</li>
+<li>因此只能选择那些相对而言容易剥夺的资源</li>
+</ul>
+</li>
+<li>进程回退<ul>
+<li>定期地把每个进程的状态信息保存在文件当中， 这样就得到一个文件序列，每个文件分别记载了 该进程在不同时刻的状态。 </li>
+<li>进程的状态信息包括它的内存映象和它所占用的 资源的状态</li>
+<li>当系统检测到死锁时，先查明有哪些资源涉及， 然后把其中一个资源的拥有者（进程）回退到以 前的某个时刻（尚未拥有该资源），从而打破死锁。但该进程从那时刻开始的所有工作都丢失了 </li>
+<li>代价高昂</li>
+</ul>
+</li>
+<li>撤销进程<ul>
+<li>撤消一个或多个处于死锁状态的进程</li>
+<li>先撤消一个死锁进程（或未死锁但占用了资源的进程），若其他死锁进程能够运行起来，则说明有效；否则继续撤消进程，直到死锁解除</li>
+<li>为了减少伤害程度，应尽可能地选择那些能安全地重新运行的进程，如编译进程；而不要去选择 那些无法安全地重新运行的进程，如对数据库的更新。 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="设备无关性-设备独立性"><a href="#设备无关性-设备独立性" class="headerlink" title="设备无关性(设备独立性)"></a>设备无关性(设备独立性)</h3><h5 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h5><p>指应用程序独立于具体使用的物理设备；涉及逻辑设备和物理设备；</p>
+<h5 id="分配"><a href="#分配" class="headerlink" title="分配"></a>分配</h5><p>逻辑设备表（LUT）：包含三列属性逻辑设备，物理设备，Dirver入口</p>
+<p>分配流程：进程给出逻辑名——通过LUT得到物 理设备及 其driver入口</p>
+<h5 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h5><ul>
+<li>设备分配更灵活：逻辑设备和物理设备间可以是多—多的映射关系。 提高了物理设备的共享性，以及使用的灵活性。<ul>
+<li>某逻辑名可对应这一类设备，提高均衡性与容错性。 </li>
+<li>几个逻辑名可对应某一个设备，提高共享性</li>
+</ul>
+</li>
+<li>易于实现I/O重定向。 <ul>
+<li>不变程序，只需改变LUT表的映射关系。</li>
+</ul>
+</li>
+</ul>
+<h5 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h5><ul>
+<li>为了实现设备的独立性，应引入逻辑设备和物理设备两个概念。</li>
+<li>在应用程序中，使用逻辑设备名称来请求使用某类设备；而系统执行时，是使用物理设备名称。</li>
+<li>鉴于驱动程序是一个与硬件（或设备）紧密相关的软件，必须在驱动程序之上设置一层软件，称为设备独立性软件，以执行所有设备的公有操作、完成逻辑设备名到物理设备名的转换（为此应设置一张逻辑设备表）并向用户层（或文件层）软件提供统一接口，从而实现设备的独立性。</li>
+</ul>
+<h3 id="假脱机系统的组成"><a href="#假脱机系统的组成" class="headerlink" title="假脱机系统的组成"></a>假脱机系统的组成</h3><h5 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h5><p>当系统中引入了多道程序技术后，完全可以利用其中的一道程序，来模拟脱机输入时的外围控制机功能，把低速I/O设备上的数据传送到高速磁盘上。再用另一道程序，模拟脱机输出时外围控制机的功能，把数据从磁盘传送到低速输出设备上。这 样，便可在主机的直接控制下，实现以前的脱机输入、输出功能。 此时的外围操作与CPU对数据的处理同时进行，我们把这种在联机情况下实现的同时外围操作的技术，称为SPOOLing技术 ，或称假脱机技术。</p>
+<h5 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h5><ul>
+<li>提高了I/O的速度</li>
+<li>将独占设备改造为共享设备。</li>
+<li>实现了虚拟设备功能。</li>
+</ul>
+<h5 id="图示"><a href="#图示" class="headerlink" title="图示"></a>图示</h5><p><img src="http://uphotos.eepw.com.cn/1388735019/pics/f5d36b7eb879fea3684c7bf0d46dbbc9.png" alt="img"></p>
+<h5 id="各部件作用"><a href="#各部件作用" class="headerlink" title="各部件作用"></a>各部件作用</h5><ol>
+<li>磁盘缓冲区：在磁盘上开辟的一个存储空间，用于暂存用户程序的 输出数据；</li>
+<li>打印缓冲区：为了缓和CPU和磁盘之间速度不匹配的矛盾，在内存中要 有一个打印输出缓冲区，用于暂存从磁盘缓冲区送来的数据；</li>
+<li>假脱机管理进程和假脱机打印进程：由假脱机管理进程为每个要求打印的用户数据，建立一个假脱机文件， 并把它放入假脱机文件队列中，由假脱机打印进程，依次对队列中的文件进行打印。</li>
+</ol>
+<h3 id="程序的局部性原理"><a href="#程序的局部性原理" class="headerlink" title="程序的局部性原理"></a>程序的局部性原理</h3><h5 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h5><p>程序的局部性原理是指程序在执行时呈现出局部性规律，即在一段时间内，整个程序的执行仅限于程序中的某一部分。相应地，执行所访问的存储空间也局限于某个内存区域。</p>
+<h5 id="表现：时间局部性和空间局部性"><a href="#表现：时间局部性和空间局部性" class="headerlink" title="表现：时间局部性和空间局部性"></a>表现：时间局部性和空间局部性</h5><ul>
+<li>时间局部性是指如果程序中的某条指令一旦执行，则不久之后该指令可能再次被执行；如果某数据被访问，则不久之后该数据可能再次被访问。</li>
+<li>空间局部性是指一旦程序访问了某个存储单元，则不久之后。其附近的存储单元也将被访问</li>
+</ul>
+<h3 id="影响缺页率的因素"><a href="#影响缺页率的因素" class="headerlink" title="影响缺页率的因素"></a>影响缺页率的因素</h3><h5 id="缺页"><a href="#缺页" class="headerlink" title="缺页"></a>缺页</h5><p>就是CPU所需访问的页面不在内存，就需要将页面调入内存，如果内存已满，就执行相应的页面置换算法</p>
+<h5 id="缺页率"><a href="#缺页率" class="headerlink" title="缺页率"></a>缺页率</h5><p>指的是访问页面失败次数除以进程页面访问总次数，设访问成功次数为S，访问失败次数为F，访问总次数A=S+F，缺页率f=F/A。</p>
+<h5 id="影响因素"><a href="#影响因素" class="headerlink" title="影响因素"></a>影响因素</h5><ul>
+<li>页面大小。页面划分比较大，则缺页率较低；反之，缺页率较高。</li>
+<li>进程分配的物理块数。所分配的物理块越多，缺页率越低；反之，越高。</li>
+<li>页面置换算法。算法的优劣决定了进程执行过程中缺页中断的次数，因此缺页率是衡量页面置换算法的重要指标。</li>
+<li>程序固有特性。程序本身的编制方法对缺页中断次数有影响，根据程序执行的局部性原理，程序编制的局部化程度越高相应执行时的缺页程度越低。</li>
+</ul>
+<h3 id="文件的逻辑结构和物理结构"><a href="#文件的逻辑结构和物理结构" class="headerlink" title="文件的逻辑结构和物理结构"></a>文件的逻辑结构和物理结构</h3><h5 id="逻辑结构：指一个文件在用户面前所呈现的形式"><a href="#逻辑结构：指一个文件在用户面前所呈现的形式" class="headerlink" title="逻辑结构：指一个文件在用户面前所呈现的形式."></a>逻辑结构：指一个文件在用户面前所呈现的形式.</h5><ul>
+<li><p>基本要求</p>
+<ul>
+<li>有助于提高对文件的检索速度 </li>
+<li>结构应方便对文件进行修改 </li>
+<li>降低文件存放在外存上的存储费用</li>
+</ul>
+</li>
+<li><p>分类</p>
+<ul>
+<li>有结构文件：记录式文件<ul>
+<li>a类（1）定长记录（2）变长记录</li>
+<li>b类（1）顺序文件，通常是定长记录（2）索引文件（3）索引顺序文件，顺序组织多个组，每组记录中的第一个记录设置一索引项</li>
+</ul>
+</li>
+<li>无结构文件：流式文件，字节为单位，利用读/写指针进行访问</li>
+</ul>
+</li>
+<li><p>顺序文件</p>
+<ul>
+<li><p>排列方式：</p>
+<ul>
+<li>串结构：记录通常是按存入时间的先后进行排序，各记录之 间的顺序与关键字无关。对串结构文件进行检索是比较费时的。</li>
+<li>顺序结构：由用户指定一个字段作为关键字，文件中的所有 记录就可以按关键字来排序。顺序结构文件可有更高的检索速度和效 率。</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li>适应用于对诸记录进行批量存取的场合；</li>
+<li>对顺序文件的存取效率是所有逻辑文件中最高的；</li>
+<li>也只有顺序文件才能被存储在磁带上，并能有效地工作。</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>在交互应用的场合，顺序文件所表现出来的性能就可能很差；</li>
+<li>如果想增加或删除一个记录，都比较困难。</li>
+</ul>
+</li>
+<li><p>记录寻址</p>
+<ul>
+<li><p>隐式寻址: (1)定长：如果已知当前记录的逻辑地址，便很容易确定下一个记录的逻辑地址。 </p>
+<p>​               (2)变长：每次都需要从正在读（写）的记录中，读出该记录的长度。</p>
+</li>
+<li><p>显式寻址：该方式可用于对定长记录的文件，实现直接或随机访问。</p>
+<ul>
+<li><p>通过文件中记录的位置</p>
+<ul>
+<li>（1）定长记录文件：${A_i=i * L}$</li>
+<li>（2）不定长记录文件: ${A_i = \sum_{j=0}^{i - 1}{L_j} }$</li>
+</ul>
+</li>
+<li><p>利用关键字：用户必须指定一个字段作为关键字，通过指定的关键字来查找该记录。 当用户给出要检索记录的关键字时，系统将利用该关键字顺序地从第一个记 录开始，与每一个记录的关键字进行比较，直到找到匹配的记录</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>索引文件</p>
+<ul>
+<li>按关键字建立索引：为变长记录文件建立一张索引表，对主文件中的每个记录，在索引表中设有一个相应表项，用于记录该记录的长度L，以及指向该记录的指针(指向 该记录在逻辑地址空间的首址)。由于索引表是按关键字排序的，是一个定长记录的顺序文件，这样就把对变长记录顺序文件的顺序检索，转变为对定长记录索引文件的随机检索，从而加快对记录检索的速度，能实现直接存取。</li>
+<li>具有多个索引表的索引文件：不同的用户，为了不同的目的，希望能按不同的属性（或不同的关键字） 来检索一条记录。为实现此要求，需要为顺序文件建立多个索引表，即为每一种可能成为检索条件的域（属性或关键字），都配置一张索引表</li>
+<li>优点：（1）提高了对文件的查找速度（2）插入和删除记录非常方便</li>
+<li>缺点：增加了存储开销</li>
+</ul>
+</li>
+<li><p>索引顺序文件</p>
+<ul>
+<li>特征：保留了顺序文件的关键特征，即记录是按关键字的顺序组织起来的。 增加了两个新特征： ①引入了文件索引表，通过该表可以实 现对索引顺序文件的随机访问； ②另一个是增加了溢出文件，用它来记录新增加的、删除的和修改的记录。</li>
+</ul>
+</li>
+<li><p>直接文件：可根据给定的关键字，直接获得指定记录的物理地址，即关键字本身就决定了记录的物理地址。这种由关键字到记录物理地址的转换，被称为键值转换。</p>
+</li>
+<li><p>哈希文件：利用Hash函数(或称散列函数)，可将关键字转换为相应记录的地址。</p>
+</li>
+</ul>
+<h5 id="物理结构：是指文件在物理存储上的存储形式。"><a href="#物理结构：是指文件在物理存储上的存储形式。" class="headerlink" title="物理结构：是指文件在物理存储上的存储形式。"></a>物理结构：是指文件在物理存储上的存储形式。</h5><ul>
+<li><p>连续分配：每个文件分配一组相邻盘块 </p>
+<ul>
+<li>优点：(1)简单(2)顺序访问容易且速度快，因为磁头移动距离小</li>
+<li>缺点：(1)要求连续空间，一段时间后需整理磁盘以消除外部碎片(2)文件不易于动态增长和删除</li>
+</ul>
+</li>
+<li><p>链接分配：文件离散的分配于各盘块中</p>
+<ul>
+<li><p>优点：提高外村利用率，文件长度可变，易于增删</p>
+</li>
+<li><p>缺点：只能顺序存取</p>
+</li>
+<li><p>隐式链接：文件目录表有start块号，每块有下一块号；</p>
+<p>​         只能顺序访问，对随机访问效率低，可靠性差</p>
+</li>
+<li><p>显示链接：用于链接的指针显式存放在内存的一张表中，查找在内存中进行；文件目录中相应目录项中的物理地址即第一盘块号；查找记录过程在内存中进行，大大提高速度</p>
+</li>
+</ul>
+</li>
+<li><p>FAT技术：将物理磁盘分成多个逻辑磁盘（卷）每个卷划出一个单独区域存放自己的目录，FAT表和逻辑驱动字母</p>
+<ul>
+<li>表项有n位，则FAT表中至多有${2^n}$个表项 </li>
+</ul>
+</li>
+<li><p>索引分配：</p>
+<ul>
+<li>单级索引<ul>
+<li>概念：为每个文件分配一个索引块</li>
+<li>链接分配问题：不能高效直接存取；FAT需占较大内存</li>
+<li>特点：（1）文件大时有利，小时浪费外存空间（2）文件大时索引块多，查找慢</li>
+<li>解决：索引太大时建立多级索引</li>
+</ul>
+</li>
+<li>多级索引<ul>
+<li>每个盘块存放盘块号个数为${P_i}$</li>
+<li>存放文件盘块号总数为${\sum P_i}$</li>
+<li>文件最大长度：总数 *  盘块大小</li>
+</ul>
+</li>
+<li>混合分配方式（UNIX系统）<ul>
+<li>一、二、多级索引合用</li>
+<li>设每块大小4K，一索引项占4B，则①直接地址：小文件（<40k）立刻读出②一次间址：4m③多次寻址：4g->4T</40k）立刻读出②一次间址：4m③多次寻址：4g-></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程的状态转换-单道多道对比"><a href="#进程的状态转换-单道多道对比" class="headerlink" title="进程的状态转换(单道多道对比)"></a>进程的状态转换(单道多道对比)</h3><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1545405375769&amp;di=8d8266285e24a2858f51e3be1f9aa753&amp;imgtype=0&amp;src=http%3A%2F%2Fimg2018.cnblogs.com%2Fblog%2F1503563%2F201812%2F1503563-20181212204245926-1027484831.png" alt="img"></p>
+<p><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=12959185,3445983837&amp;fm=15&amp;gp=0.jpg" alt="img"></p>
+<h1 id="综合题"><a href="#综合题" class="headerlink" title="综合题"></a>综合题</h1><h3 id="PV操作-PPT"><a href="#PV操作-PPT" class="headerlink" title="PV操作(PPT)"></a>PV操作(PPT)</h3><h5 id="爸爸儿女吃橘子"><a href="#爸爸儿女吃橘子" class="headerlink" title="爸爸儿女吃橘子"></a>爸爸儿女吃橘子</h5><ul>
+<li><p>题目：桌上有一空盘，允许存放一只水果，爸爸可向盘内放苹果或桔子，儿子专等吃桔子，女儿专等吃苹果。</p>
+</li>
+<li><p>描述：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">semaphore s,so,sa=<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">father()&#123; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line"></span><br><span class="line">             wait(s);</span><br><span class="line"></span><br><span class="line">            将水果放入盘中；</span><br><span class="line"></span><br><span class="line">           <span class="keyword">if</span> 放入的是桔子</span><br><span class="line"></span><br><span class="line">              <span class="function">then <span class="title">signal</span><span class="params">(so)</span></span>;</span><br><span class="line"></span><br><span class="line">              <span class="keyword">else</span>  signal(sa);</span><br><span class="line"></span><br><span class="line">          &#125; &#125; </span><br><span class="line"></span><br><span class="line">son()&#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line"></span><br><span class="line">        wait(so);</span><br><span class="line"></span><br><span class="line">        从盘中取出桔子；</span><br><span class="line"></span><br><span class="line">        signal(s);</span><br><span class="line"></span><br><span class="line">	吃桔子；</span><br><span class="line"></span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br><span class="line">daughter() &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line"></span><br><span class="line">         wait(sa);</span><br><span class="line"></span><br><span class="line">         从盘中取出苹果；</span><br><span class="line"></span><br><span class="line">         signal(s);</span><br><span class="line"></span><br><span class="line">         吃苹果；&#125;&#125;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  cobegin</span><br><span class="line"></span><br><span class="line">      father();</span><br><span class="line"></span><br><span class="line">      son();</span><br><span class="line"></span><br><span class="line">      daughter();</span><br><span class="line"></span><br><span class="line">    coend</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="老和尚小和尚"><a href="#老和尚小和尚" class="headerlink" title="老和尚小和尚"></a>老和尚小和尚</h5><ul>
+<li><p>题目：某寺庙，有小、老和尚若干，由小和尚提水入缸供老和尚饮用，水缸可容10桶水，水取自同一个井中，水井窄，每次只能容一个桶取水，水桶总数3个，每次入缸取水桶仅为1桶，且不可同时进行，试给出有关取水，入水的算法</p>
+</li>
+<li><p>描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutexj, mutexg, empty,full,count=1,1,10,0,3;</span><br><span class="line">old()&#123; </span><br><span class="line">    while(1) &#123;</span><br><span class="line">           	wait(full);缸中有无水</span><br><span class="line">            wait(count);有无桶</span><br><span class="line">            wait(mutexg);取水前</span><br><span class="line">            Fetch from gang;</span><br><span class="line">            signal(mutexg);</span><br><span class="line">            signal(count);</span><br><span class="line">            signal(empty);通知小</span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line">little()&#123; </span><br><span class="line">    while(1) &#123;</span><br><span class="line">           	wait(empty);缸中有无空</span><br><span class="line">            wait(count);有无桶</span><br><span class="line">            wait(mutexj);取水前</span><br><span class="line">            Fetch from well;</span><br><span class="line">            signal(mutexj);</span><br><span class="line">            wait(mutexg);倒水前</span><br><span class="line">            pour;</span><br><span class="line">            signal(mutexg);</span><br><span class="line">            signal(count);</span><br><span class="line">            signal(full);通知老</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="生产者消费者"><a href="#生产者消费者" class="headerlink" title="生产者消费者"></a>生产者消费者</h5><ul>
+<li><p>题目：生产者－消费者(Producer-Consumer)问题描述一组生产者向一组消费者提供消息，它们共享一个包含n个缓冲区的有界缓冲池，生产者向其中投放消息，消费者从中取得消息。</p>
+</li>
+<li><p>描述：定义互斥信号量mutex，使诸进程互斥地访问缓冲池，empty、full，表示空、满缓冲区数量。初值分别为1，n，0。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 利用记录型信号量解决问题</span><br><span class="line">semaphore mutex=1,empty=n,full=0; </span><br><span class="line">item buffer[n]; //公共缓冲池</span><br><span class="line">int in=0, out=0; //in和out两个指针</span><br><span class="line">main()&#123;      </span><br><span class="line">	   cobegin //并发执行</span><br><span class="line">       producer();</span><br><span class="line">       consumer();</span><br><span class="line">       coend</span><br><span class="line">&#125;      </span><br><span class="line">producer()&#123;</span><br><span class="line">	while(1)&#123; </span><br><span class="line">         …</span><br><span class="line">         Produce an item in nextp;</span><br><span class="line">          …</span><br><span class="line">          wait(empty);</span><br><span class="line">          wait(mutex);</span><br><span class="line">          buffer(in)=nextp;</span><br><span class="line">          in=(in+1) % n;</span><br><span class="line">          signal(mutex);</span><br><span class="line">          signal(full);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">consumer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">        wait(full);</span><br><span class="line">        wait(mutex);</span><br><span class="line">        nextc=buffer(out);</span><br><span class="line">        out=(out+1) mod n;</span><br><span class="line">        signal(mutex);</span><br><span class="line">        signal(empty);</span><br><span class="line">        Consumer the item in nextc;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// 利用ANd信号量解决问题</span><br><span class="line">semaphore mutex=1,empty=n,full=0; </span><br><span class="line">item buffer[n];</span><br><span class="line">int in=0, out=0;</span><br><span class="line">main()&#123; </span><br><span class="line">	cobegin</span><br><span class="line">    producer();</span><br><span class="line">    consumer();</span><br><span class="line">    coend</span><br><span class="line">&#125;          </span><br><span class="line">producer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">        …</span><br><span class="line">        produce an item in nextp;</span><br><span class="line">        …</span><br><span class="line">        swait(empty, mutex);</span><br><span class="line">        buffer(in)=nextp;</span><br><span class="line">        in:=(in+1) mod n;</span><br><span class="line">        ssingal(mutex, full);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Consumer()&#123;</span><br><span class="line">	while(1)&#123; </span><br><span class="line">        swait(full, mutex);</span><br><span class="line">        nextc=buffer(out);</span><br><span class="line">        out=(out+1) mod n;</span><br><span class="line">        ssignal(mutex, empty);</span><br><span class="line">		consumer the item in nextc;</span><br><span class="line">   &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="哲学家进餐"><a href="#哲学家进餐" class="headerlink" title="哲学家进餐"></a>哲学家进餐</h5><ul>
+<li><p>问题：5个哲学家用5只筷子吃面条，筷子交替摆放。</p>
+</li>
+<li><p>描述：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 规定奇数号哲学家先拿他左边的筷子，然后再去拿右边的筷子；而偶数号哲学家则相反</span><br><span class="line">philopher(i)&#123;</span><br><span class="line">	While(1)&#123;</span><br><span class="line">		if(i%2==0) &#123; </span><br><span class="line">            wait(chopstick［i］);  </span><br><span class="line">            wait(chopstick［(i+1)%5］);</span><br><span class="line">            eat;</span><br><span class="line">            signal(chopstick［i］); </span><br><span class="line">            signal(chopstick［(i+1)%5］);</span><br><span class="line">        &#125; else &#123; </span><br><span class="line">        	wait(chopstick［(i+1)%5］); </span><br><span class="line">            wait(chopstick［i］); </span><br><span class="line">            eat;</span><br><span class="line">            signal(chopstick［(i+1)%5］); </span><br><span class="line">            signal(chopstick［i］); </span><br><span class="line">            &#125;</span><br><span class="line">   	 	think;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 利用AND信号量解决问题，仅当左右两只筷子都可用才拿起筷子进餐</span><br><span class="line">semaphore chopstick[4]=&#123;1,1,1,1,1&#125;;</span><br><span class="line">philopher(i)&#123; </span><br><span class="line">	while(1) &#123;</span><br><span class="line">       	 think;</span><br><span class="line">         Sswait(chopstick[(i+1)mod 5],chopstick[i]);</span><br><span class="line">         eat</span><br><span class="line">         Ssignal(chopstick[(i+1)mod 5],chopstick[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="读者——写者"><a href="#读者——写者" class="headerlink" title="读者——写者"></a>读者——写者</h5><ul>
+<li><p>题目：读进程可共享同一对象；写进程不可共享同一对象。</p>
+</li>
+<li><p>描述：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// 写者优先</span><br><span class="line">semaphore rmutex=1, wmutex=1,s=1;</span><br><span class="line">int readcount=0;</span><br><span class="line">main()&#123;</span><br><span class="line">	cobegin</span><br><span class="line">  	reader(); write();</span><br><span class="line">  	coend;</span><br><span class="line">&#125;</span><br><span class="line">reader()&#123; </span><br><span class="line">  	while(1)&#123; </span><br><span class="line">      	wait(s);wait(rmutex);</span><br><span class="line">        if (readcount=0)  wait(wmutex);</span><br><span class="line">        readcount++;</span><br><span class="line">	    signal(rmutex);signal(s);</span><br><span class="line">		…</span><br><span class="line">	    perform read operation</span><br><span class="line">        …</span><br><span class="line">        wait(rmutex);</span><br><span class="line">        readcount--;</span><br><span class="line">        if (readcount=0) signal(wmutex);</span><br><span class="line">        signal(rmutex);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Writer()&#123;  </span><br><span class="line">	while(1)&#123;	 </span><br><span class="line">    	wait(s); wait(wmutex);</span><br><span class="line">        perform write operation;</span><br><span class="line">		signal(wmutex); signal(s);</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 信号量集解决问题</span><br><span class="line">#define  RN  20  /*RN表示最大读者数*/</span><br><span class="line">semaphore  L=RN, mx=1;   </span><br><span class="line">Main()&#123;</span><br><span class="line">	cobegin</span><br><span class="line">    reader(); write();</span><br><span class="line">    coend;</span><br><span class="line">&#125; </span><br><span class="line">reader()&#123; </span><br><span class="line">	while(1)&#123;</span><br><span class="line">    	swait(L,1,1);</span><br><span class="line">        swait(mx,1,0);</span><br><span class="line">        …</span><br><span class="line">        perform read operation;</span><br><span class="line">        …</span><br><span class="line">        ssignal(L,1);  </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line">writer()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">    	swait(mx,1,1; L,RN,0);</span><br><span class="line">        perform write operation;</span><br><span class="line">        ssignal(mx, 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="调度算法-PPT"><a href="#调度算法-PPT" class="headerlink" title="调度算法(PPT)"></a>调度算法(PPT)</h3><ul>
+<li>周转时间：完成时间-到达时间</li>
+<li>带全周转时间：周转时间/服务时间</li>
+</ul>
+<h5 id="先来先服务（FCFS）"><a href="#先来先服务（FCFS）" class="headerlink" title="先来先服务（FCFS）"></a>先来先服务（FCFS）</h5><p>特点：简单，有利于长作业</p>
+<h5 id="短作业优先（SJF）"><a href="#短作业优先（SJF）" class="headerlink" title="短作业优先（SJF）"></a>短作业优先（SJF）</h5><p>降低了平均周转时间和平均带权周转时间（提高系统吞吐量）；对长作业不利；估计时间不易确定</p>
+<h5 id="高优先权优先"><a href="#高优先权优先" class="headerlink" title="高优先权优先"></a>高优先权优先</h5><ul>
+<li>优先权调度算法类型<ul>
+<li>非抢占式优先权算法</li>
+<li>抢占式优先权算法，实时性更好</li>
+</ul>
+</li>
+<li>优先权类型<ul>
+<li>静态优先权：进程优先权整个运行期不变；简单，但是低优先权的作业可能长期不被调度</li>
+<li>动态优先权：优先权随执行时间下降，随等待时间升高；长短兼顾，但需计算优先权</li>
+</ul>
+</li>
+<li>高响应比优先算法<ul>
+<li>相应比 Rp = （等待时间tw + 服务时间ts）/ 服务时间ts</li>
+<li>短作业Rp大；ts相同的进程相当于FCFS；长作业等待一段时间也能得到服务</li>
+</ul>
+</li>
+</ul>
+<h5 id="基于时间片得轮转调度算法"><a href="#基于时间片得轮转调度算法" class="headerlink" title="基于时间片得轮转调度算法"></a>基于时间片得轮转调度算法</h5><ul>
+<li>时间片轮转算法<ul>
+<li>时间片大小q的确定：太大则退化为FCFS；太小则系统开销大</li>
+<li>系统对响应时间的要求：T=nq，n为就绪队列中的进程数</li>
+</ul>
+</li>
+<li>多级反馈队列调度<ul>
+<li>长短作业兼顾，较好的响应时间；</li>
+<li>短作业一次完成，中作业周转时间部长，大型作业不会长期不处理</li>
+</ul>
+</li>
+</ul>
+<h3 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h3><h5 id="一种能避免死锁的调度算法"><a href="#一种能避免死锁的调度算法" class="headerlink" title="一种能避免死锁的调度算法"></a>一种能避免死锁的调度算法</h5><ul>
+<li><p>核心：满足最大需求之后即可以偿还资源</p>
+</li>
+<li><p>特点：（1）允许动态申请资源，可提高资源利用率</p>
+<p>​             （2）要求事先说明最大资源要求，现实中很困难</p>
+</li>
+<li><p>流程：</p>
+<ul>
+<li>S1  某个客户提出贷款请求 </li>
+<li>S2  假设批准该请求，将得 到系统状态T； </li>
+<li>S3  判断状态T是否安全， 如果安全，则批准该请求，转S1； 如果不安全，则不批准该请求，延期到以后处理， 转S1；</li>
+</ul>
+</li>
+<li><p>例题</p>
+<ul>
+<li><p>题目：假定系统中有五个进程｛P0, P1, P2, P3, P4｝和三类资源 ｛A, B, C｝，各种资源的数量分别为10、5、7，在 T 0时刻的资源分配情况如下图所示。</p>
+<p><img src="C:\Users\24110\AppData\Roaming\Typora\typora-user-images\1545114358063.png" alt="1545114358063"></p>
+</li>
+<li><p>时刻的安全序列：1 -&gt; 3 -&gt; 4 -&gt; 2 -&gt; 0</p>
+<p><img src="C:\Users\24110\AppData\Roaming\Typora\typora-user-images\1545114442114.png" alt="1545114442114"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="虚拟地址-请求分页中逻辑地址物理地址转换"><a href="#虚拟地址-请求分页中逻辑地址物理地址转换" class="headerlink" title="虚拟地址(请求分页中逻辑地址物理地址转换)"></a>虚拟地址(请求分页中逻辑地址物理地址转换)</h3><h5 id="分页存储"><a href="#分页存储" class="headerlink" title="分页存储"></a>分页存储</h5><ul>
+<li>逻辑地址=页号+页内地址</li>
+<li>块号地址=块号+页内地址</li>
+<li>页号地址位数n，最大可有${2^n}$个页面</li>
+<li>页内地址位数m，每页最大为${2^n}$B的内存</li>
+<li>题目：页号2对应块号9，用户编程空间6个页面，每页1KB，内存为16KB，逻辑地址为 0A5C(H)，求物理地址</li>
+</ul>
+<blockquote>
+<p>${2^6=64，2^{10}=1K，2^4=16}$，页号地址6位， 页内地址10位，块号地址4位；    </p>
+<p>0A5C(H)=0000 1010 0101 1100(B)  页号(前六位)：2，页内(后十位)：10 0101 1100(B)</p>
+<p>对应块号地址9，物理地址：10 0110 0101 1100(B) = 265C（H）</p>
+</blockquote>
+<h5 id="分段存储"><a href="#分段存储" class="headerlink" title="分段存储"></a>分段存储</h5><ul>
+<li>逻辑地址=&lt;段号, 段内偏移&gt;</li>
+<li></li>
+</ul>
+<h5 id="段页式存储"><a href="#段页式存储" class="headerlink" title="段页式存储"></a>段页式存储</h5><h3 id="页内置换算法"><a href="#页内置换算法" class="headerlink" title="页内置换算法"></a>页内置换算法</h3><h5 id="OPT-最佳置换"><a href="#OPT-最佳置换" class="headerlink" title="OPT(最佳置换)"></a>OPT(最佳置换)</h5><ul>
+<li>所淘汰的页面：永不使用的或者是下次访问时间间隔最大的</li>
+</ul>
+<h5 id="FIFO-先入先出"><a href="#FIFO-先入先出" class="headerlink" title="FIFO(先入先出)"></a>FIFO(先入先出)</h5><ul>
+<li>所淘汰的页面：先进入内存的页面</li>
+</ul>
+<h5 id="LRU-最近最久未使用"><a href="#LRU-最近最久未使用" class="headerlink" title="LRU(最近最久未使用)"></a>LRU(最近最久未使用)</h5><ul>
+<li>所淘汰的页面：上次访问时间间隔最长的</li>
+</ul>
+<h3 id="文件的索引-混合分配方式8-1-3"><a href="#文件的索引-混合分配方式8-1-3" class="headerlink" title="文件的索引(混合分配方式8.1.3)"></a>文件的索引(混合分配方式8.1.3)</h3><ul>
+<li>假设每块大小为4K，一个索引项占4字节</li>
+<li>基本    ：小文件（&lt;40K）则立刻读出</li>
+<li>一次间址：4M</li>
+<li>两次间址：4G</li>
+</ul>
+<h3 id="磁盘调度算法（寻道6-6-2）"><a href="#磁盘调度算法（寻道6-6-2）" class="headerlink" title="磁盘调度算法（寻道6.6.2）"></a>磁盘调度算法（寻道6.6.2）</h3><h5 id="先来先服务FCFS"><a href="#先来先服务FCFS" class="headerlink" title="先来先服务FCFS"></a>先来先服务FCFS</h5><ul>
+<li>按照到达顺序寻道</li>
+</ul>
+<h5 id="最短寻道时间优先SSTF"><a href="#最短寻道时间优先SSTF" class="headerlink" title="最短寻道时间优先SSTF"></a>最短寻道时间优先SSTF</h5><ul>
+<li>在众多寻道之中找距离当前磁道最近的，以此类推</li>
+</ul>
+<h5 id="扫描（SCAN）算法"><a href="#扫描（SCAN）算法" class="headerlink" title="扫描（SCAN）算法"></a>扫描（SCAN）算法</h5><ul>
+<li>又名电梯算法，先从当前出发往磁道号增加的方向访问，到最大之后再往下扫</li>
+</ul>
+<h5 id="循环扫描（CSCAN）算法"><a href="#循环扫描（CSCAN）算法" class="headerlink" title="循环扫描（CSCAN）算法"></a>循环扫描（CSCAN）算法</h5><ul>
+<li>先从当前出发往磁道号增加方向访问，到最大之后再去最小的磁道号，然后再往上</li>
+</ul>
+<h5 id="NStepSCAN算法"><a href="#NStepSCAN算法" class="headerlink" title="NStepSCAN算法"></a>NStepSCAN算法</h5><ul>
+<li>步SCAN算法是将磁盘请求队列分成若干个长度为N的子队列，磁盘调度将按 FCFS算法依次处理这些子队列。</li>
+<li>而每处理一个队列时又 是按SCAN算法，对一个队列处理完后，再处理其他队列。 </li>
+<li>当正在处理某子队列时，如果又出现新的磁盘I/O请求， 便将新请求进程放入其他队列，这样就可避免出现粘着 现象。</li>
+</ul>
+<h5 id="FSCAN算法"><a href="#FSCAN算法" class="headerlink" title="FSCAN算法"></a>FSCAN算法</h5><ul>
+<li>又名分步电梯算法</li>
+<li>实质上是N步SCAN算法的简化，即FSCAN只 将磁盘请求队列分成两个子队列。</li>
+<li>一个是由当前所有请求磁盘I/O的进程形成的队列，由磁盘调度按SCAN算法进行处理。</li>
+<li>在扫描期间，将新出现的所有请求磁盘I/O的进程，放入另 一个等待处理的请求队列。这样，所有的新请求都将被推迟到下一次扫描时处理</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/复习资料/" rel="tag"># 复习资料</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/08/KD-tree/" rel="next" title="KD-tree">
+                <i class="fa fa-chevron-left"></i> KD-tree
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Robyn_zhu" />
+            
+              <p class="site-author-name" itemprop="name">Robyn_zhu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简答题"><span class="nav-number">1.</span> <span class="nav-text">简答题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多道程序"><span class="nav-number">1.0.1.</span> <span class="nav-text">多道程序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特点"><span class="nav-number">1.0.1.0.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优点"><span class="nav-number">1.0.1.0.3.</span> <span class="nav-text">优点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-number">1.0.2.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念-1"><span class="nav-number">1.0.2.0.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#原因"><span class="nav-number">1.0.2.0.2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#条件"><span class="nav-number">1.0.2.0.3.</span> <span class="nav-text">条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#处理方法"><span class="nav-number">1.0.2.0.4.</span> <span class="nav-text">处理方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备无关性-设备独立性"><span class="nav-number">1.0.3.</span> <span class="nav-text">设备无关性(设备独立性)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念-2"><span class="nav-number">1.0.3.0.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分配"><span class="nav-number">1.0.3.0.2.</span> <span class="nav-text">分配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优点-1"><span class="nav-number">1.0.3.0.3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现"><span class="nav-number">1.0.3.0.4.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假脱机系统的组成"><span class="nav-number">1.0.4.</span> <span class="nav-text">假脱机系统的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念-3"><span class="nav-number">1.0.4.0.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优点-2"><span class="nav-number">1.0.4.0.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#图示"><span class="nav-number">1.0.4.0.3.</span> <span class="nav-text">图示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#各部件作用"><span class="nav-number">1.0.4.0.4.</span> <span class="nav-text">各部件作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序的局部性原理"><span class="nav-number">1.0.5.</span> <span class="nav-text">程序的局部性原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概念-4"><span class="nav-number">1.0.5.0.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表现：时间局部性和空间局部性"><span class="nav-number">1.0.5.0.2.</span> <span class="nav-text">表现：时间局部性和空间局部性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#影响缺页率的因素"><span class="nav-number">1.0.6.</span> <span class="nav-text">影响缺页率的因素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#缺页"><span class="nav-number">1.0.6.0.1.</span> <span class="nav-text">缺页</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#缺页率"><span class="nav-number">1.0.6.0.2.</span> <span class="nav-text">缺页率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#影响因素"><span class="nav-number">1.0.6.0.3.</span> <span class="nav-text">影响因素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的逻辑结构和物理结构"><span class="nav-number">1.0.7.</span> <span class="nav-text">文件的逻辑结构和物理结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑结构：指一个文件在用户面前所呈现的形式"><span class="nav-number">1.0.7.0.1.</span> <span class="nav-text">逻辑结构：指一个文件在用户面前所呈现的形式.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#物理结构：是指文件在物理存储上的存储形式。"><span class="nav-number">1.0.7.0.2.</span> <span class="nav-text">物理结构：是指文件在物理存储上的存储形式。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的状态转换-单道多道对比"><span class="nav-number">1.0.8.</span> <span class="nav-text">进程的状态转换(单道多道对比)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#综合题"><span class="nav-number">2.</span> <span class="nav-text">综合题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PV操作-PPT"><span class="nav-number">2.0.1.</span> <span class="nav-text">PV操作(PPT)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#爸爸儿女吃橘子"><span class="nav-number">2.0.1.0.1.</span> <span class="nav-text">爸爸儿女吃橘子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#老和尚小和尚"><span class="nav-number">2.0.1.0.2.</span> <span class="nav-text">老和尚小和尚</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#生产者消费者"><span class="nav-number">2.0.1.0.3.</span> <span class="nav-text">生产者消费者</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#哲学家进餐"><span class="nav-number">2.0.1.0.4.</span> <span class="nav-text">哲学家进餐</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#读者——写者"><span class="nav-number">2.0.1.0.5.</span> <span class="nav-text">读者——写者</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调度算法-PPT"><span class="nav-number">2.0.2.</span> <span class="nav-text">调度算法(PPT)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#先来先服务（FCFS）"><span class="nav-number">2.0.2.0.1.</span> <span class="nav-text">先来先服务（FCFS）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#短作业优先（SJF）"><span class="nav-number">2.0.2.0.2.</span> <span class="nav-text">短作业优先（SJF）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高优先权优先"><span class="nav-number">2.0.2.0.3.</span> <span class="nav-text">高优先权优先</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基于时间片得轮转调度算法"><span class="nav-number">2.0.2.0.4.</span> <span class="nav-text">基于时间片得轮转调度算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#银行家算法"><span class="nav-number">2.0.3.</span> <span class="nav-text">银行家算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一种能避免死锁的调度算法"><span class="nav-number">2.0.3.0.1.</span> <span class="nav-text">一种能避免死锁的调度算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟地址-请求分页中逻辑地址物理地址转换"><span class="nav-number">2.0.4.</span> <span class="nav-text">虚拟地址(请求分页中逻辑地址物理地址转换)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分页存储"><span class="nav-number">2.0.4.0.1.</span> <span class="nav-text">分页存储</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分段存储"><span class="nav-number">2.0.4.0.2.</span> <span class="nav-text">分段存储</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#段页式存储"><span class="nav-number">2.0.4.0.3.</span> <span class="nav-text">段页式存储</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页内置换算法"><span class="nav-number">2.0.5.</span> <span class="nav-text">页内置换算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#OPT-最佳置换"><span class="nav-number">2.0.5.0.1.</span> <span class="nav-text">OPT(最佳置换)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FIFO-先入先出"><span class="nav-number">2.0.5.0.2.</span> <span class="nav-text">FIFO(先入先出)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LRU-最近最久未使用"><span class="nav-number">2.0.5.0.3.</span> <span class="nav-text">LRU(最近最久未使用)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的索引-混合分配方式8-1-3"><span class="nav-number">2.0.6.</span> <span class="nav-text">文件的索引(混合分配方式8.1.3)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘调度算法（寻道6-6-2）"><span class="nav-number">2.0.7.</span> <span class="nav-text">磁盘调度算法（寻道6.6.2）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#先来先服务FCFS"><span class="nav-number">2.0.7.0.1.</span> <span class="nav-text">先来先服务FCFS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#最短寻道时间优先SSTF"><span class="nav-number">2.0.7.0.2.</span> <span class="nav-text">最短寻道时间优先SSTF</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扫描（SCAN）算法"><span class="nav-number">2.0.7.0.3.</span> <span class="nav-text">扫描（SCAN）算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#循环扫描（CSCAN）算法"><span class="nav-number">2.0.7.0.4.</span> <span class="nav-text">循环扫描（CSCAN）算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#NStepSCAN算法"><span class="nav-number">2.0.7.0.5.</span> <span class="nav-text">NStepSCAN算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FSCAN算法"><span class="nav-number">2.0.7.0.6.</span> <span class="nav-text">FSCAN算法</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Robyn_zhu</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

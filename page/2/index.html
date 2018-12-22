@@ -301,6 +301,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/HDU多校3-C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Robyn_zhu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Imoverflow's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/31/HDU多校3-C/" itemprop="url">
+                  HDU多校3-C
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-31 13:25:32 / 修改时间：16:50:46" itemprop="dateCreated datePublished" datetime="2018-07-31T13:25:32+08:00">2018-07-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6321" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=6321</a></p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给定一个 n 个点的无向图，m 次加边或者删边操作。 在每次操作后统计有多少个匹配包含 $k = 1,2,…, n/2$ 条边。 $2 ≤n≤ 10$,$1 ≤m≤ 30000$。 </p>
+<h3 id="官方题解"><a href="#官方题解" class="headerlink" title="官方题解"></a>官方题解</h3><ul>
+<li>设 $f[i][S]$ 表示前i次操作之后，S集合的点已经匹配的方案数。<br>对于加边操作，显然$f[i][S]=f[i−1][S]+f[i−1][S−u−v]$。</li>
+<li>i 这一维可以省略，从大到小遍历 S，$f[S]+= f[S−u−v]$。 </li>
+<li>对于删边操作，注意到加边操作的顺序不影响结果，可以假设第$i−1$ 次操作是加入要删除的边。将加边操作的更新倒过来，得到：从小到大遍历 S， $f[S]− = f[S−u−v]$。 </li>
+<li>时间复杂度 O($m2^n$)。</li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>直接实现就可以了，据说爆搜会T，直接取模也会T。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,q;</span><br><span class="line"><span class="keyword">int</span> dp[(<span class="number">1</span>&lt;&lt;<span class="number">10</span>)+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> ans[(<span class="number">1</span>&lt;&lt;<span class="number">10</span>)+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> cnt[(<span class="number">1</span>&lt;&lt;<span class="number">10</span>)+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t=(<span class="number">1</span>&lt;&lt;u)+(<span class="number">1</span>&lt;&lt;v);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>; i&gt;=<span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((i&amp;t)==<span class="number">0</span>)</span><br><span class="line">            dp[i^t]=dp[i]+dp[i^t]&gt;mod?(dp[i]+dp[i^t]-mod):dp[i]+dp[i^t];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t=(<span class="number">1</span>&lt;&lt;u)+(<span class="number">1</span>&lt;&lt;v);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>&lt;&lt;n; i&lt;j; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((i&amp;t)==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i^t]=dp[i^t]-dp[i]&lt;<span class="number">0</span>?(dp[i^t]-dp[i]+mod):dp[i^t]-dp[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;q);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=(<span class="number">1</span>&lt;&lt;n); i&lt;j; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i]=<span class="number">0</span>;</span><br><span class="line">            cnt[i]=__builtin_popcount(i);</span><br><span class="line">        &#125;</span><br><span class="line">        dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;q; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> u,v;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s%d%d"</span>,s,&amp;u,&amp;v);</span><br><span class="line">            u--,v--;</span><br><span class="line">            <span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'+'</span>)</span><br><span class="line">                add(u,v);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                del(u,v);</span><br><span class="line">            <span class="built_in">memset</span>(ans,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*(n+<span class="number">3</span>));</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>&lt;&lt;n;i&lt;j;i++)</span><br><span class="line">                ans[cnt[i]]=ans[cnt[i]]+dp[i]&gt;mod?ans[cnt[i]]+dp[i]-mod:ans[cnt[i]]+dp[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i+=<span class="number">2</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d%c"</span>,ans[i],i&lt;n?<span class="string">' '</span>:<span class="string">'\n'</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/29/牛客多校3-E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1639,7 +1805,7 @@ int main()
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1658,7 +1824,9 @@ int main()
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1693,7 +1861,9 @@ int main()
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1905,6 +2075,8 @@ int main()
     
       
         
+      
+    
       
     
       
